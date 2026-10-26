@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap");
 
 :root {
@@ -5,14 +6,16 @@
   --paper: #090a09;
   --ink: #f1f0e9;
   --muted: #92948b;
-  --line: rgba(241, 240, 233, .16);
+  --line: rgba(241, 240, 233, 0.16);
   --accent: #f1f0e9;
   --art-ink: #191d10;
   --mono: "DM Mono", "Courier New", monospace;
   --sans: "Manrope", "Segoe UI", sans-serif;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -27,6 +30,7 @@ body {
   background: var(--paper);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -38,10 +42,11 @@ a {
   z-index: 10;
   top: 1rem;
   left: 1rem;
-  padding: .75rem 1rem;
+  padding: 0.75rem 1rem;
   transform: translateY(-160%);
   background: var(--accent);
-  color: var(--ink);
+  color: var(--paper);
+  transition: transform 0.2s ease;
 }
 
 .skip-link:focus {
@@ -62,8 +67,8 @@ a {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: .75rem;
-  font-size: .8rem;
+  gap: 0.75rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-decoration: none;
 }
@@ -76,7 +81,7 @@ a {
   border: 1px solid var(--ink);
   border-radius: 50%;
   font-family: var(--mono);
-  font-size: .68rem;
+  font-size: 0.68rem;
 }
 
 .header-link,
@@ -86,15 +91,15 @@ a {
 .hero-index,
 .art-label {
   font-family: var(--mono);
-  font-size: .68rem;
-  letter-spacing: .08em;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .header-link {
   display: inline-flex;
   align-items: center;
-  gap: .75rem;
+  gap: 0.75rem;
   text-decoration: none;
 }
 
@@ -121,25 +126,26 @@ a {
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: .7rem;
+  gap: 0.7rem;
   margin: 0;
   color: var(--muted);
 }
 
 .status-dot {
+  flex: 0 0 8px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #b8bab1;
-  box-shadow: 0 0 0 4px rgba(241, 240, 233, .1);
+  box-shadow: 0 0 0 4px rgba(241, 240, 233, 0.1);
 }
 
 h1 {
-  margin: 2rem 0 2.5rem -.07em;
+  margin: 2rem 0 2.5rem -0.07em;
   font-size: clamp(4.5rem, 11vw, 10rem);
   font-weight: 600;
-  letter-spacing: -.105em;
-  line-height: .79;
+  letter-spacing: -0.105em;
+  line-height: 0.79;
 }
 
 h1 span {
@@ -150,18 +156,20 @@ h1 span {
 .hero-bottom {
   display: flex;
   width: min(430px, 75%);
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .hero-note {
   margin: 0;
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
 .round-link {
   display: grid;
+  flex: 0 0 52px;
   width: 52px;
   height: 52px;
   place-items: center;
@@ -169,7 +177,10 @@ h1 span {
   border-radius: 50%;
   font-size: 1.3rem;
   text-decoration: none;
-  transition: color .2s ease, background .2s ease, transform .2s ease;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .round-link:hover {
@@ -188,7 +199,7 @@ h1 span {
 .portfolio-section {
   display: grid;
   min-height: 420px;
-  grid-template-columns: 1fr 2.2fr .4fr;
+  grid-template-columns: 1fr 2.2fr 0.4fr;
   align-items: start;
   gap: 2rem;
   padding: 5rem 11.8vw;
@@ -198,7 +209,7 @@ h1 span {
 .section-index {
   display: flex;
   gap: 1.2rem;
-  padding-top: .4rem;
+  padding-top: 0.4rem;
   color: var(--muted);
 }
 
@@ -214,8 +225,8 @@ h1 span {
   margin: 0;
   font-size: clamp(3rem, 6vw, 6rem);
   font-weight: 500;
-  letter-spacing: -.08em;
-  line-height: .95;
+  letter-spacing: -0.08em;
+  line-height: 0.95;
 }
 
 .section-content h2 span {
@@ -226,8 +237,26 @@ h1 span {
   max-width: 420px;
   margin: 1.6rem 0 0;
   color: #b1b2aa;
-  font-size: .95rem;
+  font-size: 0.95rem;
   line-height: 1.8;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.project-link span {
+  transition: transform 0.2s ease;
+}
+
+.project-link:hover span {
+  transform: translate(2px, -2px);
 }
 
 .section-symbol {
@@ -257,9 +286,11 @@ a:focus-visible {
   outline-offset: 5px;
 }
 
-@keyframes rotate {
-  to {
-    transform: rotate(360deg);
+@media (hover: hover) {
+  .site-footer a:hover,
+  .header-link:hover,
+  .project-link:hover {
+    opacity: 0.7;
   }
 }
 
@@ -273,12 +304,12 @@ a:focus-visible {
     min-height: auto;
     grid-template-columns: 1fr;
     gap: 0;
-    padding: 5rem 8vw 5rem;
+    padding: 5rem 8vw;
   }
 
   h1 {
     margin-top: 1.6rem;
-    font-size: clamp(4.6rem, 16vw, 8rem);
+    font-size: clamp(4.2rem, 16vw, 8rem);
   }
 
   .hero-bottom {
@@ -304,6 +335,7 @@ a:focus-visible {
 
   .section-content {
     grid-column: 1;
+    min-width: 0;
   }
 
   .section-symbol {
@@ -322,8 +354,16 @@ a:focus-visible {
     padding-top: 3.5rem;
   }
 
+  .hero-bottom {
+    gap: 1rem;
+  }
+
+  .hero-note {
+    font-size: 0.875rem;
+  }
+
   .site-footer {
-    font-size: .6rem;
+    font-size: 0.6rem;
   }
 }
 
@@ -332,8 +372,8 @@ a:focus-visible {
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    animation-duration: .01ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
   }
 }
